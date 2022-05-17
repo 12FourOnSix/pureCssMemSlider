@@ -71,3 +71,35 @@ img:not(:first-child) {
     background-color: #5400ff;
     transition: all .3s;
 }
+
+/* ------------------------- */
+/* Интерактивность контролов */
+/* ------------------------- */
+.control-item:hover {
+    cursor: pointer;
+}
+.control-item:hover > .control-item-circle,
+.control-item:focus-within:hover > .control-item-circle,
+.wrapper:focus-within #control_1:not(:focus-within):hover  > .control-item-circle {
+    border-color: beige;
+    background-color: beige;
+}
+/* При загрузке страницы первый контрол "активен" */
+#control_1 > .control-item-circle {
+    background-color: transparent;
+}
+.control-item:focus-within > .control-item-circle,
+.control-item:hover:focus-within > .control-item-circle {
+    background-color: transparent;
+}
+.control-item:not(:focus-within) > .control-item-circle,
+.wrapper:focus-within #control_1:not(:focus-within) .control-item-circle {
+    background-color: #5400ff;
+}
+.control-item:not(:focus-within):hover > .control-item-circle {
+    background-color: beige;
+}
+.control-item:active > .control-item-circle {
+    border-color: gold !important;
+}
+
