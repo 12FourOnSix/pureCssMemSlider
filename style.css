@@ -129,3 +129,32 @@ img:not(:first-child) {
 }
 
 
+/* ----------------- */
+/* Анимация картинок */
+/* ----------------- */
+#control_1:focus-within ~ .image-container img:nth-of-type(1),
+#control_2:focus-within ~ .image-container img:nth-of-type(2),
+#control_3:focus-within ~ .image-container img:nth-of-type(3),
+#control_4:focus-within ~ .image-container img:nth-of-type(4),
+#control_5:focus-within ~ .image-container img:nth-of-type(5) {
+    display: inline-block;
+    animation: .3s moveInImg linear;
+}
+@keyframes moveInImg {
+    from {
+      transform: translate3d(100%, 0%, 0rem);
+    }
+  
+    to {
+      transform: translate3d(0%, 0%, 10rem);
+    }
+}
+/* При первом нажатии на какой-либо контрол скрывается первая картинка */
+#control_2:focus-within ~ .image-container img:nth-of-type(1),
+#control_3:focus-within ~ .image-container img:nth-of-type(1),
+#control_4:focus-within ~ .image-container img:nth-of-type(1),
+#control_5:focus-within ~ .image-container img:nth-of-type(1) {
+    display: none;
+}
+
+
