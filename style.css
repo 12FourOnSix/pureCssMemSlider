@@ -103,3 +103,29 @@ img:not(:first-child) {
     border-color: gold !important;
 }
 
+/* ------------------ */
+/* Анимация подписей */
+/* ----------------- */
+#control_1:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_2:focus-within ~ .titles .image-title:nth-of-type(2),
+#control_3:focus-within ~ .titles .image-title:nth-of-type(3),
+#control_4:focus-within ~ .titles .image-title:nth-of-type(4),
+#control_5:focus-within ~ .titles .image-title:nth-of-type(5) {
+    display: block;
+    animation: moveTitle .8s;
+}
+@keyframes moveTitle {
+    0%   { transform: translateX(0%) scale(1); }
+    50%  { transform: translateX(5%) scale(1.05); }
+    100% { transform: translateX(0%) scale(1); }
+}
+
+/* При первом нажатии на какой-либо контрол скрывается первая надпись */
+#control_2:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_3:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_4:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_5:focus-within ~ .titles .image-title:nth-of-type(1) {
+    display: none;
+}
+
+
