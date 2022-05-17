@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Flex', sans-serif;
+}
+body {
+    background-color: #333;
+}
+.wrapper {
+    width: 55vw;
+    max-width: 90%;
+    display: flex;
+    margin: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.image-container {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    justify-content: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+img {
+    display: inline-block;
+    object-fit: contain;
+    width: 100%;
+    border-radius: 1rem;
+}
+/* При загрузке страницы только первая картинка видна */
+img:not(:first-child) {
+    display: none;
+ }
+.secondary-container {
+    display: flex;
+    justify-content: space-between;
+}
+.titles {
+    height: 2rem;
+    display: flex;
+    order: 1;
+    flex: 1;
+}
+.image-title {
+    flex-grow: 1;
+    color: beige;
+}
+/* При загрузке страницы только первая подпись видна */
+.image-title:not(:first-child) {
+   display: none;
+}
+.title-inner {
+    font-size: 1.5rem;
+}
+.control-item {
+    padding: .5rem .3rem;
+    width: fit-content;
+    order: 2;
+}
+.control-item-circle {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: .1rem solid #5400ff;
+    background-color: #5400ff;
+    transition: all .3s;
+}
+
+/* ------------------------- */
+/* Интерактивность контролов */
+/* ------------------------- */
+.control-item:hover {
+    cursor: pointer;
+}
+.control-item:hover > .control-item-circle,
+.control-item:focus-within:hover > .control-item-circle,
+.wrapper:focus-within #control_1:not(:focus-within):hover  > .control-item-circle {
+    border-color: beige;
+    background-color: beige;
+}
+/* При загрузке страницы первый контрол "активен" */
+#control_1 > .control-item-circle {
+    background-color: transparent;
+}
+.control-item:focus-within > .control-item-circle,
+.control-item:hover:focus-within > .control-item-circle {
+    background-color: transparent;
+}
+.control-item:not(:focus-within) > .control-item-circle,
+.wrapper:focus-within #control_1:not(:focus-within) .control-item-circle {
+    background-color: #5400ff;
+}
+.control-item:not(:focus-within):hover > .control-item-circle {
+    background-color: beige;
+}
+.control-item:active > .control-item-circle {
+    border-color: gold !important;
+}
+
+/* ------------------ */
+/* Анимация подписей */
+/* ----------------- */
+#control_1:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_2:focus-within ~ .titles .image-title:nth-of-type(2),
+#control_3:focus-within ~ .titles .image-title:nth-of-type(3),
+#control_4:focus-within ~ .titles .image-title:nth-of-type(4),
+#control_5:focus-within ~ .titles .image-title:nth-of-type(5) {
+    display: block;
+    animation: moveTitle .8s;
+}
+@keyframes moveTitle {
+    0%   { transform: translateX(0%) scale(1); }
+    50%  { transform: translateX(5%) scale(1.05); }
+    100% { transform: translateX(0%) scale(1); }
+}
+
+/* При первом нажатии на какой-либо контрол скрывается первая надпись */
+#control_2:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_3:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_4:focus-within ~ .titles .image-title:nth-of-type(1),
+#control_5:focus-within ~ .titles .image-title:nth-of-type(1) {
+    display: none;
+}
+
+/* ----------------- */
+/* Анимация картинок */
+/* ----------------- */
+#control_1:focus-within ~ .image-container img:nth-of-type(1),
+#control_2:focus-within ~ .image-container img:nth-of-type(2),
+#control_3:focus-within ~ .image-container img:nth-of-type(3),
+#control_4:focus-within ~ .image-container img:nth-of-type(4),
+#control_5:focus-within ~ .image-container img:nth-of-type(5) {
+    display: inline-block;
+    animation: .3s moveInImg linear;
+}
+@keyframes moveInImg {
+    from {
+      transform: translate3d(100%, 0%, 0rem);
+    }
+  
+    to {
+      transform: translate3d(0%, 0%, 10rem);
+    }
+}
+/* При первом нажатии на какой-либо контрол скрывается первая картинка */
+#control_2:focus-within ~ .image-container img:nth-of-type(1),
+#control_3:focus-within ~ .image-container img:nth-of-type(1),
+#control_4:focus-within ~ .image-container img:nth-of-type(1),
+#control_5:focus-within ~ .image-container img:nth-of-type(1) {
+    display: none;
+}
+
+/* Версии для разных разрешений, в тч для мобильных */
+@media  screen and (max-width: 1200px) {
+    .wrapper {
+        width: 70vw;
+    }
+    img, .image-container {
+        border-radius: .8rem;
+    }
+}
+@media  screen and (max-width: 768px) {
+    .wrapper {
+        width: 80vw;
+    }
+    .title-inner {
+        font-size: 1.3rem;
+    }
+    img, .image-container {
+        border-radius: .6rem;
+    }
+}
+
+/* Мобильные */
+@media  screen and (max-width: 460px) {
+    .wrapper {
+        width: 95vw;
+        justify-content: center;
+    }
+    .title-inner {
+        font-size: 1rem;
+    }
+    img, .image-container {
+        border-radius: .5rem;
+    }
+    .control-item-circle {
+        width: .8rem;
+        height: .8rem;
+    }
+    .image-container {
+        margin-bottom: .5rem;
+    }
+    .titles {
+        order: 3;
+        flex: 0 0 100%;
+        margin-top: .5rem;
+    }
+}
