@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Flex', sans-serif;
+}
+body {
+    background-color: #333;
+}
+.wrapper {
+    width: 55vw;
+    max-width: 90%;
+    display: flex;
+    margin: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.image-container {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    justify-content: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+img {
+    display: inline-block;
+    object-fit: contain;
+    width: 100%;
+    border-radius: 1rem;
+}
+/* При загрузке страницы только первая картинка видна */
+img:not(:first-child) {
+    display: none;
+ }
+.secondary-container {
+    display: flex;
+    justify-content: space-between;
+}
+.titles {
+    height: 2rem;
+    display: flex;
+    order: 1;
+    flex: 1;
+}
+.image-title {
+    flex-grow: 1;
+    color: beige;
+}
+/* При загрузке страницы только первая подпись видна */
+.image-title:not(:first-child) {
+   display: none;
+}
+.title-inner {
+    font-size: 1.5rem;
+}
+.control-item {
+    padding: .5rem .3rem;
+    width: fit-content;
+    order: 2;
+}
+.control-item-circle {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: .1rem solid #5400ff;
+    background-color: #5400ff;
+    transition: all .3s;
+}
